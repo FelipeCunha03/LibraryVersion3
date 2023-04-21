@@ -42,9 +42,7 @@ public class Menu {
         myBW.createdBorrowedFile(); 
         myBW.readFileBorrowBook();
         
-       // System.out.println(ControllerBorrow.listBorrowed);
-        
-          
+     
        
         do{
 
@@ -66,8 +64,8 @@ public class Menu {
                 System.out.println("** 10. Register a student has returned a book           **");
                 System.out.println("** 11. List the books borrowed by a specific student    **");
                 System.out.println("** 12. Check book availability                          **");
-                System.out.println("** 13. List all the books that was borrowed              **");
-                System.out.println("** 14. List all the books that are borrowed              **");
+                System.out.println("** 13. List all the books that was borrowed             **");
+                System.out.println("** 14. List all the books that are borrowed             **");
                 System.out.println("** 15. List the Queue by Book                           **");
                 System.out.println("** 16. Exit                                             **");
                 System.out.println("**********************************************************");
@@ -161,7 +159,7 @@ public class Menu {
                         break;
                         
                     case (14):
-                         myBW.listBookAreBorred();
+                         myBW.listBookAreBorrowed();
                         break;
                         
                     case (15):
@@ -169,11 +167,11 @@ public class Menu {
                         break;
 
                     default:
-                        System.out.println("Please, choose an option between 1 and 14.");
+                        System.out.println("Please, choose an option between 1 and 16.");
                 }
                 
             }catch (Exception e) {
-                System.out.println("Please, choose an option between 1 and 13. \nMessage error: " + e.getMessage());
+                System.out.println("Please, choose an option between 1 and 16. \nMessage error: " + e.getMessage());
                 s.nextLine();
             }
         }while (option != 16);

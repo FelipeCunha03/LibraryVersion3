@@ -349,26 +349,26 @@ public class ControllerBorrow {
         }
     }
 
-    public void listBookAreBorred() {
+    public void listBookAreBorrowed() {
 
-        System.out.println("List of books are borrowed");
-        for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
+        System.out.println("**LIST ALL BOOKS ARE BORROWED**");
 
-            if (ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() == false) {
+          for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
 
-                System.out.println(ControllerAvailabilityBook.listAvailableBook.get(i));
-            }
+            if (ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() != true) {
 
+                for (int j = 0; j < ControllerBook.listBook.size(); j++){
+
+                    if (ControllerBook.listBook.get(j).getIdBook().equals(ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook())){
+
+                        System.out.println(ControllerBook.listBook.get(j));
+                    }
+                }
+            }      
         }
-        
-        
-
-        }
-        
-        
-        
-
     }
+        
+}
     
     
 
