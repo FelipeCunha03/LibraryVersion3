@@ -1,27 +1,4 @@
 idBook,Title, idStudent ,First Name,LastName,borrowedDate ,returnedDate 
-e578b06e-66e9-413a-b0e2-d387d00c907d,blacksmith the,1,amanda,lor,21/04/2023 12:50:03, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,1,amanda,lor,21/04/2023 12:50:30, --- 
-5f7b55c1-58c7-4e99-82d4-030a62c8de0c,gunless,10,elaine,lor,21/04/2023 12:51:35, --- 
-f23dfac0-7780-4ff6-b159-3881916d6954,swing,10,elaine,lor,21/04/2023 12:51:48, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 13:38:29, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,1,amanda,lor,21/04/2023 13:39:31, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 13:54:34, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,4,debora,almeida,21/04/2023 13:54:49, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:07:26, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,2,barbara,souza,21/04/2023 14:07:33, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:13:51, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:14:47, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:15:18, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:22:31, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:29:03, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,2,barbara,souza,21/04/2023 14:30:08, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:32:18, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,5,elaine,lor,21/04/2023 14:32:34, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 14:35:45, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,1,amanda,lor,21/04/2023 14:35:53, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,2,barbara,souza,21/04/2023 14:38:08, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,4,debora,almeida,21/04/2023 14:38:19, --- 
-273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,1,amanda,lor,21/04/2023 15:09:08, --- 
-b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,2,barbara,souza,21/04/2023 15:09:20, --- 
-916c8516-4c29-4146-b295-e02380a4e44f,duck soup,1,amanda,lor,21/04/2023 15:56:49, --- 
-7fa0a414-6518-4d6a-a994-0e9289d5409d,meet the fockers,4,debora,almeida,21/04/2023 15:57:08, --- 
+b4eb8f48-2bbb-46bf-b836-017f9372c463,possession,8,helio,lor,21/04/2023 17:54:23, --- 
+273ddc90-fff0-4e29-a75c-39cb09cfff8e,vamps,5,elaine,lor,21/04/2023 17:54:43, --- 
+5f7b55c1-58c7-4e99-82d4-030a62c8de0c,gunless,1,amanda,lor,21/04/2023 19:15:22, --- 

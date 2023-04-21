@@ -126,6 +126,8 @@ public class ControllerBorrow {
         }
         return null;
     }
+    
+    
 
     public void waitingQueue() {
 
@@ -371,35 +373,27 @@ public class ControllerBorrow {
     
     public void storageQueuedFile() {
         
-    String idBook = null;
-    String idStudent = null;
-    int count = myMap.get(myBook).sizeOfQueue();
-    
-        try {
-            // try overwrite txt if something went wrong  will be have Exception
-            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table.csv", false));
-
-            myWriter.write("idBook " + "," + " idStudent");
-            myWriter.newLine();
-
-            for (Book countbook : myMap.keySet()){
-
-                idBook = countbook.getIdBook();
-                myWriter.write(idBook);    
-                for (CustomizedQueue queueSt : myMap.values()){
-
-                   int[] aux = queueSt.listQueue();                            
-                   idStudent = Arrays.toString(aux); 
-                   myWriter.write("," + idStudent +"\n");                   
-               }                                     
+            try  (FileWriter write = new FileWriter("src/library/Queue_table_Teste.csv")){
+                   
+           // BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table_Teste.csv", false));
+            
+             for (Map.Entry<Book,CustomizedQueue<Integer>> entrada :myMap.entrySet()) {
+                 
+             Book bookMap = entrada.getKey();
+             String idBook = bookMap.getIdBook();
+             int [] aux = entrada.getValue().listQueue();
+             String idStudent = Arrays.toString(aux);
+             
+            
+             write.write(idBook + "=" + idStudent + "\n");
+             
+  
             }
-            myWriter.close();
 
         }catch (Exception e){
             System.out.println("Error writing on txt! ");
         }
-    }    
-    
+    }
         
 }
     
