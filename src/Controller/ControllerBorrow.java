@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -138,7 +139,7 @@ public class ControllerBorrow {
 
             System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
                     + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
-
+            storageQueuedFile();
         } else {
             System.out.println("The student was not add on the queue, because it is full.");
         }
@@ -367,6 +368,38 @@ public class ControllerBorrow {
             }      
         }
     }
+    
+    public void storageQueuedFile() {
+        
+    String idBook = null;
+    String idStudent = null;
+    int count = myMap.get(myBook).sizeOfQueue();
+    
+        try {
+            // try overwrite txt if something went wrong  will be have Exception
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table.csv", false));
+
+            myWriter.write("idBook " + "," + " idStudent");
+            myWriter.newLine();
+
+            for (Book countbook : myMap.keySet()){
+
+                idBook = countbook.getIdBook();
+                myWriter.write(idBook);    
+                for (CustomizedQueue queueSt : myMap.values()){
+
+                   int[] aux = queueSt.listQueue();                            
+                   idStudent = Arrays.toString(aux); 
+                   myWriter.write("," + idStudent +"\n");                   
+               }                                     
+            }
+            myWriter.close();
+
+        }catch (Exception e){
+            System.out.println("Error writing on txt! ");
+        }
+    }    
+    
         
 }
     
