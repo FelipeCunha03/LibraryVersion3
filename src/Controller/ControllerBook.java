@@ -155,8 +155,6 @@ public class ControllerBook {
         System.out.println(listBook);
     }
 
-   
-     public static List<AvailabilityBook> listAvailableBook = new ArrayList();
 
   
 }

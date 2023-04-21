@@ -196,17 +196,17 @@ public class ControllerBorrow {
         ControllerStudent myCS = new ControllerStudent();
         List<Book> listAux = new ArrayList();
         myStudent = myCS.searchStudentByID();
+        
+        System.out.println("*************LIST OF BOOKS BORROWED BY STUDENT***************");
+      
 
-        for (int i = 0; i < ListBookByStudent.size(); i++) {
+        for (int i = 0; i < listBorrowed.size(); i++) {
 
-            if (myStudent.getIdStudent() == ListBookByStudent.get(i).getIdStudent()) {
-                listAux.add(ListBookByStudent.get(i).getMyBook());
+            if ( listBorrowed.get(i).getIdStudent() == myStudent.getIdStudent()) {
+                System.out.println(listBorrowed.get(i));
             }
         }
-        System.out.println("*************LIST OF BOOKS BORROWED BY STUDENT***************");
-        System.out.println("\nStudent: " + myStudent.getfNameStudent() + " " + myStudent.getlNameStudent());
-        System.out.println("\n***************   Book's details   ************************");
-        System.out.println(listAux);
+        
     }
 
     // storge the list borrred in  file txt.
