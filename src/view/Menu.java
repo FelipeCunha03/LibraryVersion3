@@ -8,11 +8,14 @@ import Controller.ControllerAvailabilityBook;
 import Controller.ControllerBorrow;
 import Controller.ControllerStudent;
 import Controller.ControllerBook;
+import Controller.CustomizedQueue;
 import Model.Book;
 import Model.Borrow;
 import Model.Student;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -39,11 +42,13 @@ public class Menu {
         myCB.getBookObj();
         myCS.getStudentObj();
         myCAB.getAvailabilityBookFile();   
-        myBW.createdBorrowedFile(); 
+        myBW.createdBorrowedFile();
         //myBW.createdFileQueue();
         myBW.readFileBorrowBook();
+        myBW.readQueueFile();
         
-     
+    
+
        
         do{
 
@@ -68,7 +73,8 @@ public class Menu {
                 System.out.println("** 13. List all the books that was borrowed             **");
                 System.out.println("** 14. List all the books that are borrowed             **");
                 System.out.println("** 15. List the Queue by Book                           **");
-                System.out.println("** 16. Exit                                             **");
+                System.out.println("** 16. List map                                        **");
+                System.out.println("** 17. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -166,6 +172,11 @@ public class Menu {
                     case (15):
                         myBW.queueStudentByBook();
                         break;
+                        
+                        case (16):
+                        myBW.listMaps();
+                        break;
+
 
                     default:
                         System.out.println("Please, choose an option between 1 and 16.");
@@ -175,7 +186,7 @@ public class Menu {
                 System.out.println("Please, choose an option between 1 and 16. \nMessage error: " + e.getMessage());
                 s.nextLine();
             }
-        }while (option != 16);
+        }while (option != 17);
         
     }
     

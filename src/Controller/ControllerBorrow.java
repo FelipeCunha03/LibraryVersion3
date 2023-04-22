@@ -20,9 +20,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -47,7 +49,7 @@ public class ControllerBorrow {
 
     public Borrow borrowBook() throws IOException {
 
-        myQueue = new CustomizedQueue(100);
+        myQueue = new CustomizedQueue(10);
 
         //call the method to search book by title
         myBook = myCB.searchBookByTitle();
@@ -104,10 +106,9 @@ public class ControllerBorrow {
 
                 listBorrowed.add(myBorred);
                 storageListBorrowedFile();
-                
+
                 String idBook = myBook.getIdBook();
                 myCAB.overWriteAvailabilityFile();
-                
 
                 Borrow myBorredByStudent = new Borrow(myStudent.getIdStudent(), myBook);
                 ListBookByStudent.add(myBorredByStudent);
@@ -126,8 +127,6 @@ public class ControllerBorrow {
         }
         return null;
     }
-    
-    
 
     public void waitingQueue() {
 
@@ -199,17 +198,16 @@ public class ControllerBorrow {
         ControllerStudent myCS = new ControllerStudent();
         List<Book> listAux = new ArrayList();
         myStudent = myCS.searchStudentByID();
-        
+
         System.out.println("*************LIST OF BOOKS BORROWED BY STUDENT***************");
-      
 
         for (int i = 0; i < listBorrowed.size(); i++) {
 
-            if ( listBorrowed.get(i).getIdStudent() == myStudent.getIdStudent()) {
+            if (listBorrowed.get(i).getIdStudent() == myStudent.getIdStudent()) {
                 System.out.println(listBorrowed.get(i));
             }
         }
-        
+
     }
 
     // storge the list borrred in  file txt.
@@ -227,20 +225,20 @@ public class ControllerBorrow {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv", false));
 
-            myWriter.write("idBook" + "," + "Title" +"," + " idStudent " + ","+ "First Name" + "," + "LastName"+"," +"borrowedDate " + "," + "returnedDate ");
+            myWriter.write("idBook" + "," + "Title" + "," + " idStudent " + "," + "First Name" + "," + "LastName" + "," + "borrowedDate " + "," + "returnedDate ");
             myWriter.newLine();
 
             for (int i = 0; i < listBorrowed.size(); i++) {
 
                 idBook = listBorrowed.get(i).getIdBook();
-                title= listBorrowed.get(i).getTitleBook();
+                title = listBorrowed.get(i).getTitleBook();
                 idStudent = Integer.toString(listBorrowed.get(i).getIdStudent());
-                firsName =  listBorrowed.get(i).getStudentFirstName();
-                lastName =  listBorrowed.get(i).getStudentLastName(); 
+                firsName = listBorrowed.get(i).getStudentFirstName();
+                lastName = listBorrowed.get(i).getStudentLastName();
                 dataBorrowing = listBorrowed.get(i).getDataBorrowing();
                 dataReturned = listBorrowed.get(i).getDataReturned();
-                myWriter.write(idBook + "," + title + "," + idStudent + "," +firsName+ "," + lastName +"," +dataBorrowing + "," + dataReturned);
-              
+                myWriter.write(idBook + "," + title + "," + idStudent + "," + firsName + "," + lastName + "," + dataBorrowing + "," + dataReturned);
+
                 myWriter.newLine();
 
             }
@@ -274,9 +272,8 @@ public class ControllerBorrow {
 
             }
             System.out.println("Arquivo criado!!");
-       
-    }  
-        else{
+
+        } else {
             System.out.println("arquivo ja criado");
         }
 
@@ -301,20 +298,18 @@ public class ControllerBorrow {
 
         try {
 
-            
             while (line != null) {
 
-                
                 String[] vetBorrow = line.split(",");
                 idBook = vetBorrow[0];
                 title = vetBorrow[1];
                 idStudent = Integer.parseInt(vetBorrow[2]);
                 firsName = vetBorrow[3];
-                lastName = vetBorrow[4];   
+                lastName = vetBorrow[4];
                 dataBorrowing = vetBorrow[5];
                 dataReturned = vetBorrow[6];
-         
-                Borrow BorrowObj = new Borrow(idBook, title, idStudent, firsName,lastName,dataBorrowing, dataReturned);
+
+                Borrow BorrowObj = new Borrow(idBook, title, idStudent, firsName, lastName, dataBorrowing, dataReturned);
                 listBorrowed.add(BorrowObj);
                 line = br.readLine(); //read the next line of file csv.
             }
@@ -322,8 +317,6 @@ public class ControllerBorrow {
             System.out.println("Error open file\nMessage error: " + e.getMessage());
         }
     }
-    
-    
 
     public void queueStudentByBook() {
 
@@ -356,47 +349,141 @@ public class ControllerBorrow {
 
         System.out.println("**LIST ALL BOOKS ARE BORROWED**");
 
-          for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
+        for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
 
             if (ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() != true) {
 
-                for (int j = 0; j < ControllerBook.listBook.size(); j++){
+                for (int j = 0; j < ControllerBook.listBook.size(); j++) {
 
-                    if (ControllerBook.listBook.get(j).getIdBook().equals(ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook())){
+                    if (ControllerBook.listBook.get(j).getIdBook().equals(ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook())) {
 
                         System.out.println(ControllerBook.listBook.get(j));
                     }
                 }
-            }      
+            }
         }
     }
-    
+
     public void storageQueuedFile() {
-        
-            try  (FileWriter write = new FileWriter("src/library/Queue_table_Teste.csv")){
-                   
-           // BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table_Teste.csv", false));
+
+        try ( FileWriter myWrite = new FileWriter("src/library/Queue_table_Teste.csv")) {
             
-             for (Map.Entry<Book,CustomizedQueue<Integer>> entrada :myMap.entrySet()) {
-                 
-             Book bookMap = entrada.getKey();
-             String idBook = bookMap.getIdBook();
-             int [] aux = entrada.getValue().listQueue();
-             String idStudent = Arrays.toString(aux);
-             
+            // 
             
-             write.write(idBook + "=" + idStudent + "\n");
-             
-  
+            //myWrite.write("Id Student " + "Queue  Id of Students \n");
+          
+
+            for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
+
+                int count = entrada.getValue().sizeOfQueue();
+
+                Book bookMap = entrada.getKey();
+                String idBook = bookMap.getIdBook();
+                int[] aux = entrada.getValue().listQueue();
+                String idStudent = Arrays.toString(aux);
+                  String idStudentFile = idStudent.replace("[", "").replace("]", "").replaceAll("\\s+", "").replace(",0", "");
+                myWrite.write(idBook + "," + idStudentFile + "\n");
+
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error writing on txt! ");
         }
     }
+
+    public void readQueueFile() throws IOException {
         
+
+        Book BookFile = null;
+
+        CustomizedQueue<Integer> idQueue = new CustomizedQueue(10);
+        
+        Queue<Integer> queue = new LinkedList<>();
+         
+        try {
+            
+            BufferedReader myRead = new BufferedReader(new FileReader("src/library/Queue_table_Teste.csv"));
+            
+
+            String line;
+
+            while ((line = myRead.readLine()) != null) {
+                
+                
+
+                String[] element = line.split(",");
+                String idBook = element[0];
+               
+                int id1 = Integer.parseInt(element[1]);         
+                idQueue.AddStudentQueue(id1);
+              
+                int id2 = Integer.parseInt(element[2]); 
+                idQueue.AddStudentQueue(id2);
+                   
+                int id3 = Integer.parseInt(element[3]);
+                idQueue.AddStudentQueue(id3);
+                   
+                int id4 = Integer.parseInt(element[4]);
+                idQueue.AddStudentQueue(id4);
+
+                int id5 = Integer.parseInt(element[5]);
+                idQueue.AddStudentQueue(id5);
+
+                int id6 = Integer.parseInt(element[6]);
+                idQueue.AddStudentQueue(id6);
+
+                int id7 = Integer.parseInt(element[7]);
+                idQueue.AddStudentQueue(id7);
+                   
+                int id8 = Integer.parseInt(element[8]);
+                idQueue.AddStudentQueue(id8);
+ 
+                int id9 = Integer.parseInt(element[9]);
+                idQueue.AddStudentQueue(id9);
+              
+               
+                int id10 = Integer.parseInt(element[10]);
+                idQueue.AddStudentQueue(id10);
+             
+               
+
+                for (int i = 0; i < ControllerBook.listBook.size(); i++) {
+
+                    if (ControllerBook.listBook.get(i).getIdBook().equals(idBook)) {
+
+                        BookFile = ControllerBook.listBook.get(i);
+                    }
+
+                }
+
+                myMap.put(BookFile,idQueue);
+
+            }
+          
+            myRead.close();
+
+        } catch (Exception e) {
+            System.out.println("Error on read Queue csv! ");
+        }
+    }
+    
+    
+    public void listMaps(){
+        
+         for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
+
+                Book book  = entrada.getKey();
+                int[] idStudent = entrada.getValue().listQueue();
+                System.out.println("Book: " + book );
+                
+                for (int i = 0 ; i< idStudent.length; i++){
+                    
+                    System.out.println(idStudent[i]);
+                }
+                
+            }
+         
+         
+    }
+
 }
-    
-    
-
-
