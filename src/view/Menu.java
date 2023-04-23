@@ -44,10 +44,10 @@ public class Menu {
         myCAB.getAvailabilityBookFile(); 
         
         myBW.createdBorrowedFile();
-        myBW.createdQueueFile();
+        //myBW.createdQueueFile();
         
         myBW.readFileBorrowBook();
-        myBW.readQueueFile();
+        //myBW.readQueueFile();
         
        
         do{
@@ -73,7 +73,7 @@ public class Menu {
                 System.out.println("** 13. List all the books that was borrowed             **");
                 System.out.println("** 14. List all the books that are borrowed             **");
                 System.out.println("** 15. List the Queue by Book                           **");
-                System.out.println("** 16. List map                                        **");
+                System.out.println("** 16. List map                                         **");
                 System.out.println("** 17. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
@@ -173,17 +173,20 @@ public class Menu {
                         myBW.queueStudentByBook();
                         break;
                         
-                        case (16):
+                    case (16):
                         myBW.listMaps();
                         break;
-
-
+                        
+                    case (17):
+                        System.out.println("The system is over.");
+                        break;
+                    
                     default:
-                        System.out.println("Please, choose an option between 1 and 16.");
+                        System.out.println("Invalid information. Choose an option between 1 and 17.");
                 }
                 
             }catch (Exception e) {
-                System.out.println("Please, choose an option between 1 and 16. \nMessage error: " + e.getMessage());
+                System.out.println("Invalid information. Choose an option between 1 and 17.  \n");
                 s.nextLine();
             }
         }while (option != 17);

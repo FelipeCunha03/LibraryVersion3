@@ -18,10 +18,6 @@ public class AvailabilityBook {
         this.isAvailable = isAvailable;
     }
 
-   
-
-   
-
     public String getIdBook() {
         return idBook;
     }
@@ -29,7 +25,6 @@ public class AvailabilityBook {
     public void setIdBook(String idBook) {
         this.idBook = idBook;
     }
-
 
     public boolean isIsAvailable() {
         return isAvailable;
@@ -44,8 +39,5 @@ public class AvailabilityBook {
         return "Id Book: " + idBook +
                 " Availability: " + isAvailable + "\n";
     }
-
     
-
-      
 }

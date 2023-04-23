@@ -24,8 +24,7 @@ public class Book {
         this.fNameAuthor = fNameAuthor;
         this.lNameAuthor = lNameAuthor;
         this.bookTitle = bookTitle;
-        this.genre = genre;
-       
+        this.genre = genre;     
     }
 
     public String getIdBook() {
@@ -71,7 +70,7 @@ public class Book {
     // methodos toString  for output the book as String.
     @Override
     public String toString() {
-        return 
+        return "\n-----------------Book's details --------------"+
                 "\nId Book: " + idBook
                 + "\nAuthor's name: " + fNameAuthor + " " + lNameAuthor
                 + "\nBook's title: " + bookTitle

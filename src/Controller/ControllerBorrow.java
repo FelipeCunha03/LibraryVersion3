@@ -20,11 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -44,12 +42,12 @@ public class ControllerBorrow {
     ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
     LocalDateTime localTime;
     String dataReturned, dataBorrowed;
-      Map<Book, CustomizedQueue<Integer>> myMap = new HashMap<>();
-      CustomizedQueue<Integer> myQueue;
+    Map<Book, CustomizedQueue<Integer>> myMap = new HashMap<>();
+    CustomizedQueue<Integer> myQueue;
 
     public Borrow borrowBook() throws IOException {
-
-        myQueue = new CustomizedQueue(10);
+       
+        myQueue = new CustomizedQueue(10); //our queue has a capacity of up to ten students
 
         //call the method to search book by title
         myBook = myCB.searchBookByTitle();
@@ -58,7 +56,7 @@ public class ControllerBorrow {
             return null;
         }
 
-        //call the method to search student by ID
+        //call the method to search student by ID       
         myStudent = myCS.searchStudentByID();
         if (myStudent == null) {
             messageError("Student");
@@ -75,7 +73,7 @@ public class ControllerBorrow {
 
                     //if the student who wants borrow the book is the first of the queue waiting, remove this student of the queue and let him borrow it
                     if (myStudent.getIdStudent() == myMap.get(myBook).getFirstStudentOfQueue()) {
-                        myMap.get(myBook).RemoveStudentQueue(myStudent.getIdStudent());
+                        myMap.get(myBook).RemoveFirstStudentQueue();
 
                     } else {//if not, show a message with the name of the first on the queue
 
@@ -120,10 +118,10 @@ public class ControllerBorrow {
             }
         }
         //if the book is not avaiable to be borrowed, ask the user about go to the queue
-        System.out.println("Book is borrowed. Would you like to wait on the queue for the book? S/N");
+        System.out.println("Book is borrowed. Would you like to wait on the queue for the book? Y/N");
         String answer = s.nextLine().toLowerCase();
 
-        if (answer.equals("s")) {
+        if (answer.equals("y")) {
             waitingQueue(); //if the student wants go to the queue, call the method waitingQueue
         }
         return null;
@@ -208,10 +206,9 @@ public class ControllerBorrow {
                 System.out.println(listBorrowed.get(i));
             }
         }
-
     }
 
-    // storge the list borrred in  file txt.
+    // storage the list borrred in  file txt.
     public void storageListBorrowedFile() {
 
         String idBook;
@@ -226,7 +223,7 @@ public class ControllerBorrow {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv", false));
 
-            myWriter.write("idBook" + "," + "Title" + "," + " idStudent " + "," + "First Name" + "," + "LastName" + "," + "borrowedDate " + "," + "returnedDate ");
+            myWriter.write("idBook" + "," + "title" + "," + " idStudent " + "," + "firstName" + "," + "lastName" + "," + "borrowedDate " + "," + "returnedDate ");
             myWriter.newLine();
 
             for (int i = 0; i < listBorrowed.size(); i++) {
@@ -241,7 +238,6 @@ public class ControllerBorrow {
                 myWriter.write(idBook + "," + title + "," + idStudent + "," + firsName + "," + lastName + "," + dataBorrowing + "," + dataReturned);
 
                 myWriter.newLine();
-
             }
             myWriter.close();
 
@@ -257,27 +253,18 @@ public class ControllerBorrow {
     public void createdBorrowedFile() {
 
         File file = new File("src/library/Borrow_table.csv");
-
         if (file.exists() == false) {
 
-            try {
+            try{
                 // try  to creat the txt and put number and  no number in there if something went wrong I have catch.
                 BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv"));
                 myWriter.write("idBook " + "," + " idStudent " + "," + "borrowedDate " + "," + "returnedDate ");
-
                 myWriter.close();
 
-            } catch (Exception e) { // if something went wrong when system try to  read txt treat Exception
-
-                System.out.println("Error acess file !!");
-
-            }
-           
-
-        } else {
-            
+            }catch(Exception e){ // if something went wrong when system try to  read txt treat Exception
+                System.out.println("Error to create the file.");
+            }                    
         }
-
     }
 
     public void readFileBorrowBook() throws FileNotFoundException, IOException {
@@ -312,19 +299,19 @@ public class ControllerBorrow {
                 listBorrowed.add(BorrowObj);
                 line = br.readLine(); //read the next line of file csv.
             }
-        } catch (Exception e) {
+        }catch(Exception e){
             System.out.println("Error open file\nMessage error: " + e.getMessage());
         }
     }
 
-    public void queueStudentByBook() {
+    public void queueStudentByBook() { //it is working only for the students add on the queue in execution time
 
         myBook = myCB.searchBookByTitle();
 
         if (!myMap.containsKey(myBook)) {
-            System.out.println("No students are waiting for " + myBook.getBookTitle());
+            System.out.println("There is no student waiting on the queue for the book " + myBook.getBookTitle());
 
-        } else {
+        }else{
 
             int[] studentQueue = myMap.get(myBook).listQueue();
 
@@ -335,11 +322,10 @@ public class ControllerBorrow {
 
                     if (studentQueue[i] == listStudent.get(j).getIdStudent()) {
 
-                        System.out.println("Id Student: " + studentQueue[i] + " - Name Student: " + listStudent.get(i).getfNameStudent()
-                                + " " + listStudent.get(i).getfNameStudent());
+                        System.out.println("Id Student: " + studentQueue[i] + " - Name Student: " + listStudent.get(j).getfNameStudent()
+                                + " " + listStudent.get(j).getlNameStudent());
                     }
                 }
-
             }
         }
     }
@@ -363,38 +349,30 @@ public class ControllerBorrow {
         }
     }
 
-    public void createdQueueFile() {
-
-        File file = new File("src/library/Queue_table_Teste.csv");
-
-        if (file.exists() == false) {
-
-            try {
-                // try  to creat the txt and put number and  no number in there if something went wrong I have catch.
-                BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table_Teste.csv"));
-                //myWriter.write("Id Book  " + "," + "Queue ");
-
-                myWriter.close();
-
-            } catch (Exception e) { // if something went wrong when system try to  read txt treat Exception
-
-                System.out.println("Error acess file !!");
-
-            }
-           
-
-        } else {
-           
-        }
-
-    }
-
+//    public void createdQueueFile() {
+//
+//        File file = new File("src/library/Queue_table.csv");
+//
+//        if (file.exists() == false) {
+//
+//            try{
+//                // try  to creat the txt and put number and  no number in there if something went wrong I have catch.
+//                BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table_Teste.csv"));
+//                //myWriter.write("Id Book  " + "," + "Queue ");
+//                myWriter.close();
+//
+//            }catch (Exception e){ // if something went wrong when system try to  read txt treat Exception
+//
+//                System.out.println("Error to create the file.");
+//            }         
+//        }
+//    }
+    
+    // storage the queue of students in  file txt in execution time. 
     public void storageQueuedFile() {
 
-        try ( FileWriter myWrite = new FileWriter("src/library/Queue_table_Teste.csv")) {
+        try ( FileWriter myWrite = new FileWriter("src/library/Queue_table.csv")) {
 
-            // 
-            //myWrite.write("Id Student " + "Queue  Id of Students \n");
             for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
 
                 int count = entrada.getValue().sizeOfQueue();
@@ -406,8 +384,6 @@ public class ControllerBorrow {
                 String idStudentFile = idStudent.replaceAll("\\s+", "").replace("[", "").replace("]", "").replace(",0","");
 
                 myWrite.write(idBook + "," + idStudentFile + "\n");
-                System.out.println("idBook: " + idBook + " + idStudentFile: " + idStudentFile);
-
             }
 
         } catch (Exception e) {
@@ -415,37 +391,29 @@ public class ControllerBorrow {
         }
     }
     
-    
-
-    
-    public void readQueueFile() throws IOException {
+    public void readQueueFile() throws IOException { //this method is not done, so its not been called.s
 
             Book BookFile = null;
             CustomizedQueue<Integer> idQueue = new CustomizedQueue(10);
             String idBook = null;
            
-            String path = "src/library/Queue_table_Teste.csv";
+            String path = "src/library/Queue_table.csv";
             BufferedReader br = new BufferedReader(new FileReader(path));
             br.readLine();
             String line = null;
-            
-        
-        try {
+                   
+        try{
           
             while (line != null) { // linha de erro
-                        System.out.println("linha de erro "); 
+                
                 String[] element = line.split(",");
-                 idBook = element[0];
-                   
-            
-               // while ((lineQueu = br.readLine()).equals("]")) {
+                idBook = element[0];
 
                     int id1 = Integer.parseInt(element[1]);
                     idQueue.AddStudentQueue(id1);
 
                     int id2 = Integer.parseInt(element[2]);
-                    idQueue.AddStudentQueue(id2);
-                    
+                    idQueue.AddStudentQueue(id2);                
 
                     int id3 = Integer.parseInt(element[3]);
                     idQueue.AddStudentQueue(id3);
@@ -471,37 +439,26 @@ public class ControllerBorrow {
                     int id10 = Integer.parseInt(element[10]);
                     idQueue.AddStudentQueue(id10);
                   
-                  
-     
 
                 for (int i = 0; i < ControllerBook.listBook.size(); i++) {
-
                     if (ControllerBook.listBook.get(i).getIdBook().equals(idBook)) {
-
                         BookFile = ControllerBook.listBook.get(i);
                     }
-
                 }
 
                 System.out.println("id" + BookFile );
-                 int [] vet = idQueue.listQueue();
-                 
+                 int [] vet = idQueue.listQueue();              
                  for(int i =0; i< vet.length; i++){
                      System.out.println(vet[i]);
-                 }
-                
-                myMap.put(BookFile, idQueue);
-            
+                 }              
+                myMap.put(BookFile, idQueue);        
             }
-
-        } catch (Exception e) {
-            
-             e.printStackTrace();
+        }catch(Exception e){
             System.out.println("Error on read Queue csv! ");
         }
     }
 
-    public void listMaps() {
+    public void listMaps(){ //it is working only in execution time
 
         for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
 
@@ -510,13 +467,8 @@ public class ControllerBorrow {
             System.out.println("Book: " + book);
 
             for (int i = 0; i < idStudent.length; i++) {
-
                 System.out.println(idStudent[i]);
             }
-
         }
-
-    }
-    
-    
+    }  
 }

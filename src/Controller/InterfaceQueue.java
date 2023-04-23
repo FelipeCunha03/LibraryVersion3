@@ -24,10 +24,10 @@ public interface InterfaceQueue {
      * @param idStudent
      * @return the idStudent of queue that is removing.
      */
-    public int RemoveStudentQueue(int idStudent);
+    public int RemoveFirstStudentQueue();
 
     /**
-     * First element of the queue without removing it
+     * Remove the first element of the queue
      *
      * @return  first student of queue.
      */

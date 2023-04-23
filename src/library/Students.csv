@@ -1,15 +1,102 @@
 idStudent,firstNameStudent,lastNameStudent,address,city,phoneNumber,gender,DOB
-1,Amanda,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-2,Barbara,Souza,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
-3,Camila,Almeida,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
-4,Debora,Almeida,24 Old County Road,Dublin,35383089634,F,3/20/1985
-5,Elaine,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-6,Eloisa,Serra,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
-7,Joana,Santos,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
-8,Helio,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-9,Felipe,Cunha,24 Old County Road,Dublin,35383089634,F,3/20/1985
-10,Rafa,Pereira,24 Old County Road,Dublin,35383089634,F,3/20/1985
-11,Suley,Sobreira,24 Old County Road,Dublin,35383089634,F,3/20/1985
-12,lorenzo,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-13,Paulo,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-14,Caio,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
+10,Kiana,Lor,24 Old County Road,Dublin,35383089634,F,2/1/1985
+9,Joshua,Lonaker,77 O Connell Street,Dun Laoghaire,35383089644,M,2/2/1985
+8,Camila,Blanco,102 Henry Street,Cork,35383089678,F,2/3/1985
+7,Natasha,Yarusso,12 Parnell Street,Luimneach,3538308989,F,2/4/1985
+6,Brooke,Cazares,27 Charles Stewart Parnell,Gaillimh,35383089777,F,2/5/1985
+5,Rochelle,Johnson,87 James Larkin,Tallaght,35383089789,F,2/6/1985
+4,Joey,Abreu,23 Grafton Street,Waterford,35489785686,M,2/7/1985
+3,Preston,Suarez,68 Wellington Road,Swords,354878986,M,2/8/1985
+2,Lee,Dong,24 Old County Road,Drogheda,645646465,F,2/9/1985
+1,Amanda,Diaz,77 O Connell Street,Dundalk,35489785456,M,2/10/1985
+20,Maja,Nicholson,102 Henry Street,Navan,35489785412,F,2/11/1985
+19,Sasha,Jansen,12 Parnell Street,Ennis,35489785687,F,2/12/1985
+18,Alexander,Sherman,27 Charles Stewart Parnell,Sligo,35489785689,M,2/13/1985
+17,Edgar,Sanchez,87 James Larkin,Cavan,35489785684,M,2/14/1985
+16,Barbara,Strunk,23 Grafton Street,Dublin,35489785614,M,2/15/1985
+15,Brittany,Sath,68 Wellington Road,Dublin,35489785656,F,2/16/1985
+14,Meggan,Smith,24 Old County Road,Dublin,35489785612,F,2/17/1985
+13,Ericka,Nicholson,77 O Connell Street,Dublin,35478785686,other,2/18/1985
+12,David,Jansen,102 Henry Street,Dublin,35489785633,M,2/19/1985
+11,Kyle,Sherman,12 Parnell Street,Dublin,35489785611,M,2/20/1985
+30,Rojesh,Sanchez,27 Charles Stewart Parnell,Dublin,35489787786,M,2/21/1985
+29,David,Weber,87 James Larkin,Dun Laoghaire,35489785623,M,2/22/1985
+28,Rachel,Lor,23 Grafton Street,Cork,35489785611,F,2/23/1985
+27,Moustafa,Lonaker,68 Wellington Road,Luimneach,35489785612,M,2/24/1985
+26,Sila,Blanco,24 Old County Road,Gaillimh,35489785613,M,2/25/1985
+25,Samantha,Yarusso,77 O Connell Street,Tallaght,35489785614,F,2/26/1985
+24,Angela,Cazares,102 Henry Street,Dun Laoghaire,35489785615,F,2/27/1985
+23,Brandon,Johnson,12 Parnell Street,Tallaght,35489785616,M,2/28/1985
+22,Reilly,Abreu,27 Charles Stewart Parnell,Swords,35489785617,F,3/1/1985
+21,Victoria,Ibarra,87 James Larkin,Dublin,35489785611,F,3/2/1985
+40,Dakota,Wirth,23 Grafton Street,Dublin,35489785618,F,3/3/1985
+39,Lauren,Klocker,68 Wellington Road,Dublin,35489785619,F,3/4/1985
+38,Michael,Benson,24 Old County Road,Dublin,35489785620,M,3/5/1985
+37,Sean,Rozga,77 O Connell Street,Dublin,35489785621,M,3/6/1985
+36,Cody,Vermeylen,102 Henry Street,Dun Laoghaire,3546546565,M,3/7/1985
+35,Kinaana,Jamail,12 Parnell Street,Dun Laoghaire,5646546546,F,3/8/1985
+34,Daniel,Garcia,27 Charles Stewart Parnell,Cork,4546768786,M,3/9/1985
+33,Katrina,Saito,87 James Larkin,Luimneach,35467876886,F,3/10/1985
+32,Joshua,Galloway,23 Grafton Street,Gaillimh,56468768765,M,3/11/1985
+31,Aylin,Mendoza,68 Wellington Road,Tallaght,645646465,F,3/12/1985
+50,Sharon,Fyfe,24 Old County Road,Tallaght,68786798786,F,3/13/1985
+49,Afnaan,Williams,77 O Connell Street,Dun Laoghaire,645646465,F,3/14/1985
+48,Jesse,Fukushima,102 Henry Street,Navan,787989745,F,3/15/1985
+47,Kenny,Glaisher,12 Parnell Street,Ennis,465456678,M,3/16/1985
+46,Tawnie,Stevens,27 Charles Stewart Parnell,Sligo,1234567879,F,3/17/1985
+45,Britany,Trinh,87 James Larkin,Dun Laoghaire,65464564645,F,3/18/1985
+44,Alan,Kern,23 Grafton Street,Cork,57897892,M,3/19/1985
+43,Zoe,Beavers,68 Wellington Road,Luimneach,12348789,F,3/20/1985
+42,Sidney,Aguilar,23 Grafton Street,Gaillimh,978456756,M,3/21/1985
+41,Miriam,Garcia,23 Grafton Street,Tallaght,4657879878,F,3/22/1985
+60,Issac,Saito,23 Grafton Street,Dublin,4549787987,M,3/23/1985
+59,Hannah,Galloway,23 Grafton Street,Dublin,456787987,F,3/24/1985
+58,Zachary,Mendoza,23 Grafton Street,Dublin,487987987897,M,3/25/1985
+57,Moira,Fyfe,23 Grafton Street,Dublin,65768786798,F,3/26/1985
+56,Nicole,Humpal,23 Grafton Street,Dublin,556768787,F,3/27/1985
+55,Georgia,Williams,12 Parnell Street,Cork,897988789,F,3/28/1985
+54,Connor,Ferry,12 Parnell Street,Dun Laoghaire,97897455,M,3/29/1985
+53,Amanda,Tatum,12 Parnell Street,Navan,35657876978,F,3/30/1985
+52,Cameron,Diaz,12 Parnell Street,Ennis,4687987894,M,3/31/1985
+51,Shuraih,Robinson,12 Parnell Street,Sligo,8676878646,M,4/1/1985
+70,Katelyn,Ferry,12 Parnell Street,Dun Laoghaire,6768786484,F,4/2/1985
+69,Colin,Abreu,12 Parnell Street,Dun Laoghaire,5468786798,M,4/3/1985
+68,Donald,Versell,12 Parnell Street,Dublin,8498498489,M,4/4/1985
+67,Macaela,Oliveira,102 Henry Street,Dublin,64864844,F,4/5/1985
+66,Brittany,Riley,102 Henry Street,Dublin,6468786786,F,4/6/1985
+65,Cameron,Maria,102 Henry Street,Dublin,343787678,M,4/7/1985
+64,William,Jones,102 Henry Street,Dublin,645646465,M,4/8/1985
+63,Lindsey,Lohan,102 Henry Street,Dun Laoghaire,645646465,F,4/9/1985
+62,Gabrielle,Santana,102 Henry Street,Dun Laoghaire,6546545645,F,4/10/1985
+61,Allison,Jesus,93 York Street,Dun Laoghaire,6465445645,F,4/11/1985
+80,Sheyenne,Jetsan,23 Stephen Street,Dun Laoghaire,3454644654,F,4/12/1985
+79,Joseph,McOnagh,93 York Street,Swords,6465456465,M,4/13/1985
+78,Fikra,Lara,23 Stephen Street,Dun Laoghaire,6456455464,F,4/14/1985
+77,Aurelia,Davis,24 Old County Road,Swords,645646465,F,4/15/1985
+76,Taylor,Elstun,24 Old County Road,Swords,676878676,F,4/16/1985
+75,Joseph,Snider,24 Old County Road,Dun Laoghaire,646867631351,M,4/17/1985
+74,Sourinthone,Tran,93 York Street,Dun Laoghaire,133213213,M,4/18/1985
+73,Ibrahim,Aluf,23 Stephen Street,Dublin,3133132564,M,4/19/1985
+72,Alexandra,Levy,77 O Connell Street,Dublin,646546464,F,4/20/1985
+71,Macie,Nguyen,77 O Connell Street,Dublin,4665465464,F,4/21/1985
+90,Sean,Taylor,77 O Connell Street,Dublin,65465468797,M,4/22/1985
+89,Casey,Williams,77 O Connell Street,Dublin,1312345454,M,4/23/1985
+88,Staci,Evans,77 O Connell Street,Cork,645646465,F,4/24/1985
+87,Luke,Walker,77 O Connell Street,Luimneach,645646465,M,4/25/1985
+86,Harper,Scott,77 O Connell Street,Gaillimh,64564688,F,4/26/1985
+85,Sherleen,Cooper,77 O Connell Street,Tallaght,4687879,F,4/27/1985
+84,Myles,Cruz,77 O Connell Street,Waterford,89897987987,M,4/28/1985
+83,Juan ,Guerrero,77 O Connell Street,Swords,645646465,M,4/29/1985
+82,Lindsey,Freund,77 O Connell Street,Drogheda,67879789,F,4/30/1985
+81,Savannah,Clark,77 O Connell Street,Dublin,4658787978,F,5/1/1985
+101,Bradley,Monsell,93 York Street,Dublin,54648987989,M,5/2/1985
+100,Daisha,Schmidt,23 Stephen Street,Dublin,79879879887,F,5/3/1985
+99,Airabella,Gomez,85 Bride Street,Dublin,65467879798,F,5/4/1985
+98,Hailey,Malle,85 Bride Street,Dublin,678979797,F,5/5/1985
+97,Devon,Miranda,85 Bride Street,Dublin,9879879798,M,5/6/1985
+96,Danielle,Pablo,85 Bride Street,Dublin,667897998778,F,5/7/1985
+95,Mateo,Moreira,85 Bride Street,Dublin,9879887987,M,5/8/1985
+94,William,Baker,85 Bride Street,Dublin,7898789798,M,5/9/1985
+93,Jason,Jhon,85 Bride Street,Waterford,4564678,M,5/10/1985
+92,Antonio,Alburquerque,85 Bride Street,Swords,646578678,M,5/11/1985
+91,Rachel,Queiroz,85 Bride Street,Drogheda,112324678,F,5/12/1985

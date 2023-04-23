@@ -4,16 +4,12 @@
  */
 package Controller;
 
-import Model.Book;
 import Model.Student;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -65,7 +61,7 @@ public class ControllerStudent {
         return listStudent;
     }
 
-    public Student searchStudentByName() {
+    public Student searchStudentByName() { //linear searching
 
         String fNameStudent, lNameStudent;
         System.out.println("Inform the student's name: ");
@@ -90,7 +86,7 @@ public class ControllerStudent {
         return null;
     }
 
-    public Student searchStudentByID() {
+    public Student searchStudentByID() { //linear searching
 
         boolean checkId = false;
         String idValid = null; // It was created as String because I wanted to used the regex for to valid the ID 
@@ -120,7 +116,7 @@ public class ControllerStudent {
         return null;
     }
 
-    public void listStudentByName() {
+    public void listStudentByName() { //bubble sorting
 
         for(int i = 0; i < listStudent.size(); i++){ //go through the list of students
 
@@ -140,7 +136,7 @@ public class ControllerStudent {
         System.out.println(listStudent);
     }
 
-    public void listStudentByID() {
+    public void listStudentByID() { //bubble sorting
 
         Student temp;
         for(int i = 0; i < listStudent.size(); i++){

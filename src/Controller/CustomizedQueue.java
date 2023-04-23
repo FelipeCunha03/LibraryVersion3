@@ -15,9 +15,6 @@ public class CustomizedQueue<T> implements InterfaceQueue {
     private int first;//  index of the element
     private int last;
     private int capacity;
-    
-    
-    
 
     // constructor
     public CustomizedQueue(int capacity) {
@@ -35,7 +32,6 @@ public class CustomizedQueue<T> implements InterfaceQueue {
         if(queueSize >= capacity) {
             return false;
         }
-
         if(first == -1){
             first++;
         }
@@ -46,17 +42,22 @@ public class CustomizedQueue<T> implements InterfaceQueue {
     }
 
     @Override
-    public int RemoveStudentQueue(int id) {
+    public int RemoveFirstStudentQueue() {
+        
+        final int pos = 0;
 
-        int idReturn;
         if(queueSize == 0){
             return -1;
         }
-        idReturn = idStudent[first];
-        // idStudent[first] = 0;
-        first++;
+        int temp = this.idStudent[pos];
+    
+        for (int i = pos; i< idStudent.length - 1; i++){
+            idStudent[i] = idStudent[i+1];
+        }
         queueSize--;
-        return idReturn;
+        return temp;
+
+
     }
 
     @Override
@@ -93,15 +94,12 @@ public class CustomizedQueue<T> implements InterfaceQueue {
     }
     
     @Override
-    public  int[] listQueue() {
+    public int[] listQueue() {
    
-        return idStudent;
-        
-    }
-    
+        return idStudent;      
+    }   
     public String toString() {
         return "CustomizedQueue{" + "idStudent=" + idStudent + ", queueSize=" + queueSize + ", first=" + first + ", last=" + last + ", capacity=" + capacity + '}';
     }
-
-    
+  
 }

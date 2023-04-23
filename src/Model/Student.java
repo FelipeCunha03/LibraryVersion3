@@ -4,9 +4,6 @@
  */
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author felipecunha
@@ -31,7 +28,6 @@ public class Student {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.DOB = DOB;
-
     }
 
     // gets and setters

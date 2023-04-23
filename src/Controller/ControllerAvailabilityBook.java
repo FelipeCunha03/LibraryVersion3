@@ -25,7 +25,7 @@ import java.util.Set;
  */
 public class ControllerAvailabilityBook {
 
-     public static List<AvailabilityBook> listAvailableBook = new ArrayList();
+    public static List<AvailabilityBook> listAvailableBook = new ArrayList();
 
     public void getAvailabilityBookFile() throws FileNotFoundException, IOException {
 
@@ -49,25 +49,19 @@ public class ControllerAvailabilityBook {
                 AvailabilitykSet.add(AvailabilityBookObj);
                 line = br.readLine(); //read the next line of file csv.
             }
-        } catch (Exception e) {
+        }catch (Exception e){
             System.out.println("Error open file\nMessage error: " + e.getMessage());
         }
-
         listAvailableBook = new ArrayList<>(AvailabilitykSet);// to convert setList of book to arrayList,I think It's easier to use List for maniputation.
-
     }
     
     
     public void overWriteAvailabilityFile(){
-        
-     
-        
-        
+               
         try {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/AvailabilityOfBook_table.csv", false));
-            
-     
+                
              myWriter.newLine();
             for (int i = 0; i < listAvailableBook.size(); i++) {
 
@@ -76,15 +70,11 @@ public class ControllerAvailabilityBook {
                 
                 myWriter.write(idBook + "," + Availability );         
                 myWriter.newLine();
-
             }
             myWriter.close();
-
         } catch (Exception e) {
             System.out.println("Error writing on txt! ");
-        }
-    
-        
+        }   
     }
 
     public boolean checkBookAvailability() {
@@ -105,5 +95,4 @@ public class ControllerAvailabilityBook {
         }
         return true;
     }
-
 }

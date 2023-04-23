@@ -4,11 +4,8 @@
  */
 package Controller;
 
-import static Controller.ControllerStudent.listStudent;
-import Model.AvailabilityBook;
 import Model.Book;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -48,8 +45,7 @@ public class ControllerBook {
 
         //We had put all processe for get the book from data  for treatement some exeception if will have some erroe ao open the file.  
         try{
-
-             
+           
             // Start read the file books.The Loop will try get line by line still the next line will be NULL.
             while(line != null){
 
@@ -59,8 +55,7 @@ public class ControllerBook {
                 String firstNameA = vetBook[1];
                 String lastNameA = vetBook[2];
                 String title = vetBook[3];
-                String genre = vetBook[4];
-                
+                String genre = vetBook[4];             
 
                 Book bookObj = new Book(idBook, firstNameA.toLowerCase(),lastNameA.toLowerCase(), title.toLowerCase(), genre);
                 myBookSet.add(bookObj);
@@ -72,10 +67,9 @@ public class ControllerBook {
 
         listBook = new ArrayList<>(myBookSet);// to convert setList of book to arrayList,I think It's easier to use List for maniputation.
         return listBook;
-
     }
 
-    public Book searchBookByTitle() {
+    public Book searchBookByTitle() { //linear searching
 
         System.out.println("Inform the book's title: ");
         String bookTitle = s.nextLine().trim().toLowerCase();
@@ -90,7 +84,7 @@ public class ControllerBook {
         return null;
     }
 
-    public Book searchBookByAuthor() {
+    public Book searchBookByAuthor() { //linear searching
 
         String fNameAuthor, lNameAuthor;
         System.out.println("Inform the name book's author : ");
@@ -104,7 +98,6 @@ public class ControllerBook {
             System.out.println("Inform the author's full name.");
             return null;
         }
-
         for (int i = 0; i < listBook.size(); i++) {
 
             if (listBook.get(i).getfNameAuthor().equals(fNameAuthor)
@@ -113,11 +106,10 @@ public class ControllerBook {
                 return listBook.get(i);
             }
         }
-
         return null;
     }
 
-    public void listBookByAuthor() {
+    public void listBookByAuthor() { //bubble sorting
 
         for (int i = 0; i < listBook.size(); i++) {
 
@@ -137,7 +129,7 @@ public class ControllerBook {
         System.out.println(listBook);
     }
 
-    public void listBookByTitle() {
+    public void listBookByTitle() {//bubble sorting
 
         for (int i = 0; i < listBook.size(); i++) {
 
@@ -154,9 +146,6 @@ public class ControllerBook {
         System.out.println("\n*************LIST BOOKS BY BOOK'S TITLE ORDER*************\n");
         System.out.println(listBook);
     }
-
-
-  
 }
 
   
