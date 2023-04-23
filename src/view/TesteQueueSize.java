@@ -35,9 +35,16 @@ public class TesteQueueSize {
                 String idStudentFile = idStudent.replaceAll("\\s+", "").replace("[", "").replace("]", "").replace(",0", "");
                 
                 System.out.println(idStudentFile);
-         
-         
-         
+                
+                for (int i = 0; i < idStudentFile.length(); i++) {
+                aux[i] = (int) idStudentFile.charAt(i);
+                 System.out.println("vetor de interior: " + aux[i]);
+                }  
+                
+                    for(int j= 0; j<aux.length; j++){
+                        System.out.println("vetor de interior: " + aux[j]);
+}
      }
+     
     
 }

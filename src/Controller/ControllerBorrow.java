@@ -44,8 +44,8 @@ public class ControllerBorrow {
     ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
     LocalDateTime localTime;
     String dataReturned, dataBorrowed;
-    Map<Book, CustomizedQueue<Integer>> myMap = new HashMap<>();
-    CustomizedQueue<Integer> myQueue;
+      Map<Book, CustomizedQueue<Integer>> myMap = new HashMap<>();
+      CustomizedQueue<Integer> myQueue;
 
     public Borrow borrowBook() throws IOException {
 
@@ -89,6 +89,7 @@ public class ControllerBorrow {
                         }
                     }
                 }
+
                 ControllerAvailabilityBook.listAvailableBook.get(i).setIsAvailable(false); //set false when the book is borrowed
 
                 localTime = LocalDateTime.now();
@@ -107,7 +108,7 @@ public class ControllerBorrow {
                 listBorrowed.add(myBorred);
                 storageListBorrowedFile();
 
-                String idBook = myBook.getIdBook();
+                String idBook = myBook.getIdBook();// list book by students 
                 myCAB.overWriteAvailabilityFile();
 
                 Borrow myBorredByStudent = new Borrow(myStudent.getIdStudent(), myBook);
@@ -271,10 +272,10 @@ public class ControllerBorrow {
                 System.out.println("Error acess file !!");
 
             }
-            System.out.println("Arquivo criado!!");
+           
 
         } else {
-            System.out.println("arquivo ja criado");
+            
         }
 
     }
@@ -290,10 +291,8 @@ public class ControllerBorrow {
         String title;
 
         String path = "src/library/Borrow_table.csv"; //path of data It is.
-
         BufferedReader br = new BufferedReader(new FileReader(path));
         br.readLine();
-
         String line = br.readLine();
 
         try {
@@ -364,15 +363,38 @@ public class ControllerBorrow {
         }
     }
 
+    public void createdQueueFile() {
+
+        File file = new File("src/library/Queue_table_Teste.csv");
+
+        if (file.exists() == false) {
+
+            try {
+                // try  to creat the txt and put number and  no number in there if something went wrong I have catch.
+                BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table_Teste.csv"));
+                //myWriter.write("Id Book  " + "," + "Queue ");
+
+                myWriter.close();
+
+            } catch (Exception e) { // if something went wrong when system try to  read txt treat Exception
+
+                System.out.println("Error acess file !!");
+
+            }
+           
+
+        } else {
+           
+        }
+
+    }
+
     public void storageQueuedFile() {
 
         try ( FileWriter myWrite = new FileWriter("src/library/Queue_table_Teste.csv")) {
-            
-            // 
-            
-            //myWrite.write("Id Student " + "Queue  Id of Students \n");
-          
 
+            // 
+            //myWrite.write("Id Student " + "Queue  Id of Students \n");
             for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
 
                 int count = entrada.getValue().sizeOfQueue();
@@ -381,71 +403,76 @@ public class ControllerBorrow {
                 String idBook = bookMap.getIdBook();
                 int[] aux = entrada.getValue().listQueue();
                 String idStudent = Arrays.toString(aux);
-                  String idStudentFile = idStudent.replace("[", "").replace("]", "").replaceAll("\\s+", "").replace(",0", "");
+                String idStudentFile = idStudent.replaceAll("\\s+", "").replace("[", "").replace("]", "").replace(",0","");
+
                 myWrite.write(idBook + "," + idStudentFile + "\n");
+                System.out.println("idBook: " + idBook + " + idStudentFile: " + idStudentFile);
 
             }
 
         } catch (Exception e) {
-            System.out.println("Error writing on txt! ");
+            System.out.println("Error writing on Table queue! ");
         }
     }
+    
+    
 
+    
     public void readQueueFile() throws IOException {
-        
 
-        Book BookFile = null;
-
-        CustomizedQueue<Integer> idQueue = new CustomizedQueue(10);
+            Book BookFile = null;
+            CustomizedQueue<Integer> idQueue = new CustomizedQueue(10);
+            String idBook = null;
+           
+            String path = "src/library/Queue_table_Teste.csv";
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            br.readLine();
+            String line = null;
+            
         
-        Queue<Integer> queue = new LinkedList<>();
-         
         try {
-            
-            BufferedReader myRead = new BufferedReader(new FileReader("src/library/Queue_table_Teste.csv"));
-            
-
-            String line;
-
-            while ((line = myRead.readLine()) != null) {
-                
-                
-
+          
+            while (line != null) { // linha de erro
+                        System.out.println("linha de erro "); 
                 String[] element = line.split(",");
-                String idBook = element[0];
-               
-                int id1 = Integer.parseInt(element[1]);         
-                idQueue.AddStudentQueue(id1);
-              
-                int id2 = Integer.parseInt(element[2]); 
-                idQueue.AddStudentQueue(id2);
+                 idBook = element[0];
                    
-                int id3 = Integer.parseInt(element[3]);
-                idQueue.AddStudentQueue(id3);
-                   
-                int id4 = Integer.parseInt(element[4]);
-                idQueue.AddStudentQueue(id4);
+            
+               // while ((lineQueu = br.readLine()).equals("]")) {
 
-                int id5 = Integer.parseInt(element[5]);
-                idQueue.AddStudentQueue(id5);
+                    int id1 = Integer.parseInt(element[1]);
+                    idQueue.AddStudentQueue(id1);
 
-                int id6 = Integer.parseInt(element[6]);
-                idQueue.AddStudentQueue(id6);
+                    int id2 = Integer.parseInt(element[2]);
+                    idQueue.AddStudentQueue(id2);
+                    
 
-                int id7 = Integer.parseInt(element[7]);
-                idQueue.AddStudentQueue(id7);
-                   
-                int id8 = Integer.parseInt(element[8]);
-                idQueue.AddStudentQueue(id8);
- 
-                int id9 = Integer.parseInt(element[9]);
-                idQueue.AddStudentQueue(id9);
-              
-               
-                int id10 = Integer.parseInt(element[10]);
-                idQueue.AddStudentQueue(id10);
-             
-               
+                    int id3 = Integer.parseInt(element[3]);
+                    idQueue.AddStudentQueue(id3);
+
+                    int id4 = Integer.parseInt(element[4]);
+                    idQueue.AddStudentQueue(id4);
+
+                    int id5 = Integer.parseInt(element[5]);
+                    idQueue.AddStudentQueue(id5);
+
+                    int id6 = Integer.parseInt(element[6]);
+                    idQueue.AddStudentQueue(id6);
+
+                    int id7 = Integer.parseInt(element[7]);
+                    idQueue.AddStudentQueue(id7);
+
+                    int id8 = Integer.parseInt(element[8]);
+                    idQueue.AddStudentQueue(id8);
+
+                    int id9 = Integer.parseInt(element[9]);
+                    idQueue.AddStudentQueue(id9);
+
+                    int id10 = Integer.parseInt(element[10]);
+                    idQueue.AddStudentQueue(id10);
+                  
+                  
+     
 
                 for (int i = 0; i < ControllerBook.listBook.size(); i++) {
 
@@ -456,34 +483,40 @@ public class ControllerBorrow {
 
                 }
 
-                myMap.put(BookFile,idQueue);
-
+                System.out.println("id" + BookFile );
+                 int [] vet = idQueue.listQueue();
+                 
+                 for(int i =0; i< vet.length; i++){
+                     System.out.println(vet[i]);
+                 }
+                
+                myMap.put(BookFile, idQueue);
+            
             }
-          
-            myRead.close();
 
         } catch (Exception e) {
+            
+             e.printStackTrace();
             System.out.println("Error on read Queue csv! ");
         }
     }
-    
-    
-    public void listMaps(){
-        
-         for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
 
-                Book book  = entrada.getKey();
-                int[] idStudent = entrada.getValue().listQueue();
-                System.out.println("Book: " + book );
-                
-                for (int i = 0 ; i< idStudent.length; i++){
-                    
-                    System.out.println(idStudent[i]);
-                }
-                
+    public void listMaps() {
+
+        for (Map.Entry<Book, CustomizedQueue<Integer>> entrada : myMap.entrySet()) {
+
+            Book book = entrada.getKey();
+            int[] idStudent = entrada.getValue().listQueue();
+            System.out.println("Book: " + book);
+
+            for (int i = 0; i < idStudent.length; i++) {
+
+                System.out.println(idStudent[i]);
             }
-         
-         
-    }
 
+        }
+
+    }
+    
+    
 }

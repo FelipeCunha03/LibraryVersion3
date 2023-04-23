@@ -41,14 +41,14 @@ public class Menu {
         // calling the methot that will get the file data of books/students/generateAvailableBook 
         myCB.getBookObj();
         myCS.getStudentObj();
-        myCAB.getAvailabilityBookFile();   
+        myCAB.getAvailabilityBookFile(); 
+        
         myBW.createdBorrowedFile();
-        //myBW.createdFileQueue();
+        myBW.createdQueueFile();
+        
         myBW.readFileBorrowBook();
         myBW.readQueueFile();
         
-    
-
        
         do{
 
